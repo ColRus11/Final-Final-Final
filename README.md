@@ -97,12 +97,8 @@ funcion nombreFuncion(param1, param2) {
 
 ## Ejecución del lenguaje
 
-1. **Requisitos:** Python 3, ANTLR4, NumPy, Matplotlib
-2. **Instalación de dependencias:**
-   ```bash
-   pip install numpy matplotlib
-   ```
-3. **Ejecutar un archivo ColRus:**
+1. **Requisitos:** Python 3, ANTLR4
+2. **Ejecutar un archivo ColRus:**
    ```bash
    python3 interpreter.py archivo.coru
    ```
@@ -112,10 +108,8 @@ funcion nombreFuncion(param1, param2) {
 ## Estructura del proyecto
 
 - `interpreter.py`: Intérprete principal del lenguaje
-- `visitor.py`: Implementación completa del patrón Visitor
 - `ColRus.g4`: Gramática personalizada en ANTLR4
 - Archivos `.coru`: Programas de ejemplo y pruebas funcionales
-- `librerias/`: Código de soporte para funciones nativas
 
 ---
 
@@ -145,8 +139,3 @@ entrenar_perceptron("xor_data.txt");
 ```
 
 ---
-
-## Créditos
-
-Este lenguaje fue desarrollado desde cero como parte del Proyecto 3: *Construcción de Lenguaje de Dominio Específico para Deep Learning*, utilizando Python, ANTLR4 y un enfoque educativo orientado a la comprensión profunda de los procesos de compilación y aprendizaje automático.
-
