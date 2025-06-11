@@ -1,0 +1,3 @@
+m = [[4, 7], [2, 6]];
+m_inv = Matriz.inversa(m);
+muestre m_inv;

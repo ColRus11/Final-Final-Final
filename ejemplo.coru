@@ -1,0 +1,79 @@
+seno = Matematicas.sin(1.57);
+coseno = Matematicas.cos(1.57);
+muestre "Seno:", seno;
+muestre "Coseno:", coseno;
+
+seno = [[0, Matematicas.sin(0)]];
+seno = seno + [[0.1, Matematicas.sin(0.1)]];
+graficar seno, "line"();
+
+datos = [[1, 2], [3, 4]];
+modelo crear_mlp([2, 4, 1]);
+modelo entrenar_mlp(datos, [[0], [1]], 100, 0.01);
+prediccion = modelo predecir_mlp([2, 1]);
+muestre prediccion;
+graficar datos, "scatter"();
+
+m = [[4, 7], [2, 6]];
+m_inv = Matriz.inversa(m);
+muestre m_inv;
+
+puntos = Archivos.leer_csv("parabola.txt");
+graficar puntos, "line"();
+
+seno = [[0, Matematicas.sin(0)]]; 
+coseno = [[0, Matematicas.cos(0)]]; 
+para x desde 1 hasta 62 { seno = seno + [[x * 0.1, Matematicas.sin(x * 0.1)]];
+coseno = coseno + [[x * 0.1, Matematicas.cos(x * 0.1)]]; } 
+graficar seno, coseno, "line"(); 
+
+puntos = Archivos.leer_csv("puntos_regresion.txt");
+coef = regresion_lineal(puntos);
+m = coef[0];
+b = coef[1];
+muestre m, b;
+
+// Encontrar min y max de x para la línea ajustada
+fila = puntos[0];
+min_x = fila[0];
+max_x = fila[0];
+para i desde 1 hasta 4 {
+    fila = puntos[i];
+    valor_x = fila[0];
+    si valor_x < min_x {
+        min_x = valor_x;
+    }
+    si valor_x > max_x {
+        max_x = valor_x;
+    }
+}
+
+// Generar puntos para la línea ajustada (10 puntos entre min_x y max_x)
+linea = [[min_x, m * min_x + b]];
+paso = (max_x - min_x) / 9;
+para i desde 1 hasta 9 {
+    x = min_x + i * paso;
+    linea = linea + [[x, m * x + b]];
+}
+graficar puntos, linea, "scatter"();
+
+capas = [2, 4, 1];
+modelo crear_mlp ( capas );
+datos = Archivos.leer_csv("xor_data.txt");
+entradas = [[0, 0], [0, 1], [1, 0], [1, 1]];
+salidas = [[0], [1], [1], [0]];
+modelo entrenar_mlp ( entradas, salidas, 20000, 0.1 );
+para i desde 0 hasta 3 {
+    entrada = entradas[i];
+    pred = modelo predecir_mlp ( entrada );
+    pred_val = pred[0];             // Extract pred[0]
+    esperado = salidas[i];          // Extract salidas[i]
+    esperado_val = esperado[0];     // Extract salidas[i][0]
+    muestre "Entrada:", entrada, "Predicción:", pred_val, "Esperado:", esperado_val;
+}
+
+puntos = Archivos.leer_csv("kmeans_data.txt");
+clusters = kmeans(puntos, 2);
+cluster1 = clusters[0];
+cluster2 = clusters[1];
+graficar cluster1, cluster2, "scatter"();

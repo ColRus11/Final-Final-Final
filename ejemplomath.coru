@@ -1,0 +1,4 @@
+seno = Matematicas.sin(1.57);
+coseno = Matematicas.cos(1.57);
+muestre "Seno:", seno;
+muestre "Coseno:", coseno;
