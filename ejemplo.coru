@@ -57,18 +57,18 @@ para i desde 1 hasta 9 {
 }
 graficar puntos, linea, "scatter"();
 
-capas = [2, 4, 1];
+capas = [2, 6, 1];
 modelo crear_mlp ( capas );
 datos = Archivos.leer_csv("xor_data.txt");
 entradas = [[0, 0], [0, 1], [1, 0], [1, 1]];
 salidas = [[0], [1], [1], [0]];
-modelo entrenar_mlp ( entradas, salidas, 20000, 0.1 );
+modelo entrenar_mlp ( entradas, salidas, 20000, 0.01 );
 para i desde 0 hasta 3 {
     entrada = entradas[i];
     pred = modelo predecir_mlp ( entrada );
-    pred_val = pred[0];             // Extract pred[0]
-    esperado = salidas[i];          // Extract salidas[i]
-    esperado_val = esperado[0];     // Extract salidas[i][0]
+    pred_val = pred[0];
+    esperado = salidas[i];
+    esperado_val = esperado[0];
     muestre "Entrada:", entrada, "Predicción:", pred_val, "Esperado:", esperado_val;
 }
 
